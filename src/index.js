@@ -1,5 +1,8 @@
 const express = require('express');
 const cors = require('cors');
+const { response } = require('express')
+const { request } = require('http')
+const { type } = require('os')
 
 const { v4: uuidv4 } = require('uuid');
 
@@ -43,6 +46,8 @@ app.post('/users', (request, response) => {
     todos: []
   })
 
+  return response.status(201).json(users)
+
 });
 
 app.get('/todos', checksExistsUserAccount, (request, response) => {
@@ -65,4 +70,5 @@ app.delete('/todos/:id', checksExistsUserAccount, (request, response) => {
   // Complete aqui
 });
 
-module.exports = app;
+// module.exports = app;
+app.listen(3333)
